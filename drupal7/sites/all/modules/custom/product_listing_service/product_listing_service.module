@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * Implements hook_services_resources().
+ * Create service resource for APIs to return the necessary json data.
+ */
+function product_listing_service_services_resources() {
+	$resources = array();
+
+//Include the necessary inc files.
+	module_load_include('inc', 'product_listing_service', 'includes/product_listing_service.services');
+	module_load_include('inc', 'product_listing_service', 'includes/category_listing_service.services');
+
+//Service Apis for contents.
+	$resources += product_listing_services_resource();
+	$resources += category_listing_services_resource();
+
+	return $resources;
+}

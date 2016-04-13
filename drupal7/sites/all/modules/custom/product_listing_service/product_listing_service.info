@@ -1,0 +1,6 @@
+name = Product Listing service
+description = WebService APIs for Housing Schemes.
+package = Custom
+core = 7.x
+dependencies[] = services
+dependencies[] = rest_server

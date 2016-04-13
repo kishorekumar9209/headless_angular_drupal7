@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Implements hook_services_resources().
+ * Create service resource for APIs to return the necessary json data.
+ */
+function order_operation_services_resources() {
+	$resources = array();
+
+//Include the necessary inc files.
+	module_load_include('inc', 'order_operation', 'includes/create_order.services');
+	$resources += order_services_resource();
+
+	return $resources;
+}

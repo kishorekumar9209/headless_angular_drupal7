@@ -1,0 +1,272 @@
+
+
+
+
+
+<header id="header"><!--header-->
+       <div class="header_top"><!--header_top-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="contactinfo">
+                        <ul class="nav nav-pills">
+                            <li><a href="#/dev"><i class="fa fa-phone"></i> </a></li>
+                            <li><a href="#/dev"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="social-icons pull-right">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/dev"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#/dev"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#/dev"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#/dev"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="#/dev"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/header_top-->
+
+    <div class="header-middle"><!--header-middle-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="logo pull-left">
+                        <a ng-href = "#/home"><img src="images/home/logo.png" alt="" /></a>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="shop-menu pull-right">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/account"><i class="fa fa-user"></i> Account</a></li>
+                            <li><a  ng-controller="OrderStatusController" ng-click="UpdateOrder()" href="#/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                            <li><a href="#/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li  ng-controller="LoginController" ng-show="!logoutbutton"><a href="#/login"><i class="fa fa-lock"></i> Login</a></li>
+                            <li  ng-controller="LoginController" ng-show="logoutbutton"><a ng-click="logout()"><i class="fa fa-lock"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/header-middle-->
+
+    <div class="header-bottom" ng-controller ="AccountController"><!--header-bottom-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="mainmenu pull-left">
+                        <ul class="nav navbar-nav collapse navbar-collapse">
+                             <li ng-controller="LoginController" ng-show="!logoutbutton"><a href="#/home" class="active">Home</a></li>    
+                            <li  ng-controller="LoginController" ng-show="logoutbutton"><a href="#/">Hi {{FirstName}}<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="#/account">MyAccount</a></li>
+                                    <li><a ng-click="logout()">logout</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="#/">Shop<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="#/home">Products</a></li>
+                                    <li><a href="#/cart">Cart</a></li>
+                                    <li><a href="#/checkout">Checkout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="search_box pull-right">
+                        <input type="text" placeholder="Search" ng-model="searchProduct"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/header-bottom-->
+</header>
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="breadcrumbs">
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">Check out</li>
+        </ol>
+    </div><!--/breadcrums-->
+    <div class="register-req">
+        <p>Order Confirmation</p>
+    </div><!--/register-req-->
+    <div class="review-payment">
+        <h2>Review & Payment</h2>
+    </div>
+
+    <div class="table-responsive cart_info" ng-controller = "CartController">
+        <table class="table table-condensed">
+            <thead>
+                <tr class="cart_menu">
+                    <td class="image">Item</td>
+                    <td class="description"></td>
+                    <td class="price">Price</td>
+                    <td class="quantity">Quantity</td>
+                    <td class="total">Total</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="product in cart_products">
+                    <td class="cart_product">
+                        <a href=""><img ng-src={{product.image}} alt=""height="150px"  ></a>
+                    </td>
+                    <td class="cart_description">
+                        <h4><a href="">{{product.name}}</a></h4>
+                        <p>Web ID: 1089772</p>
+                    </td>
+                    <td class="cart_price">
+                        <p>{{product.price}}</p>
+                    </td>
+                    <td class="cart_quantity">
+                        <div class="cart_quantity_button">
+                            <a class="cart_quantity_up" href=""> + </a>
+                            <input class="cart_quantity_input" type="text" name="quantity" value="{{product.quantity}}" autocomplete="off" size="2">
+                            <a class="cart_quantity_down" href=""> - </a>
+                        </div>
+                    </td>
+                    <td class="cart_total">
+                        <p class="cart_total_price">$ {{product.total}}</p>
+                    </td>
+                    <td class="cart_delete">
+                        <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="shopper-informations" ng-controller ="OrderCompleteController">
+        <div class="row">
+            <div class="col-sm-5 clearfix">
+                <div class="bill-to">
+                    <p>Bill To</p>
+                    <div class="form-one">
+                        <form ng-submit="BillingOrderSave()">
+                            <input type="text" required ng-model = "firstname" placeholder="First Name *">
+                            <input type="text" required ng-model = "lastname" placeholder="Last Name *">
+                            <input type="text" required ng-model = "address1" placeholder="Address 1 *">
+                            <input type="text" required ng-model = "address2" placeholder="Address 2">
+                            <input type="text" required ng-model = "state" placeholder="State">
+                            <select ng-model = "country">
+                                <option>Country-</option>
+                                <option value="IN">India</option>
+                            </select>
+                            <input type="text" ng-model = "zip" placeholder="Zip / Postal Code *">
+                            <br><br><br>
+                            <button type="submit" class="btn btn-default">Place Order</button>
+                        </form>
+                    </div>
+                </div>
+            </div>				
+        </div>
+    </div>
+</div>
+
+
+
+<footer id="footer"><!--Footer-->
+    <div class="footer-top">
+        <div class="container">
+         
+        </div>
+    </div>
+
+    <div class="footer-widget">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>Service</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#/dev">Online Help</a></li>
+                            <li><a href="#/dev">Contact Us</a></li>
+                            <li><a href="#/dev">Order Status</a></li>
+                            <li><a href="#/dev">Change Location</a></li>
+                            <li><a href="#/dev">FAQ’s</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>Quock Shop</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#/dev">T-Shirt</a></li>
+                            <li><a href="#/dev">Mens</a></li>
+                            <li><a href="#/dev">Womens</a></li>
+                            <li><a href="#/dev">Gift Cards</a></li>
+                            <li><a href="#/dev">Shoes</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>Policies</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#/dev">Terms of Use</a></li>
+                            <li><a href="#/dev">Privecy Policy</a></li>
+                            <li><a href="#/dev">Refund Policy</a></li>
+                            <li><a href="#/dev">Billing System</a></li>
+                            <li><a href="#/dev">Ticket System</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>About Shopper</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#/dev">Company Information</a></li>
+                            <li><a href="#/dev">Careers</a></li>
+                            <li><a href="#/dev">Store Location</a></li>
+                            <li><a href="#/dev">Affillate Program</a></li>
+                            <li><a href="#/dev">Copyright</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-sm-offset-1">
+                    <div class="single-widget">
+                        <h2>About Shopper</h2>
+                        <form action="#" class="searchform">
+                            <input type="text" placeholder="Your email address" />
+                            <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+                            <p>Get the most recent updates from <br />our site and be updated your self...</p>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>

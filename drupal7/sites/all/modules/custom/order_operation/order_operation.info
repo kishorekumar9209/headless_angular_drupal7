@@ -1,0 +1,6 @@
+name = Order Operation
+description = WebService APIs for create order,cart.
+package = Custom
+core = 7.x
+dependencies[] = services
+dependencies[] = rest_server

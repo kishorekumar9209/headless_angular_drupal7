@@ -1,0 +1,61 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="left-sidebar">
+                <!--/category-products-->
+                <h2>Category</h2>
+                <div  ng-controller = "CategoryController" class="panel-group category-products" id="accordian"><!--category-productsr-->
+                    <div class="panel panel-default" ng-repeat="category in Categories">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a ng-href='#/category/{{category.tid}}'> {{category.name}} </a></h4>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="price-range"><!--price-range-->
+                    <h2>Price Range</h2>
+                    <div class="well text-center">
+                        <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+                        <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+                    </div>
+                </div><!--/price-range-->
+
+                <div class="shipping text-center"><!--shipping-->
+                    <img src="images/home/shipping.jpg" alt="" />
+                </div><!--/shipping-->
+
+            </div>
+        </div>
+        <div class="product-details"><!--product-details-->
+             <div  ng-show="showMessage" class="message fadein fadeout">{{message}} is added to cart</div>  
+            <div class="col-sm-5">
+                <div class="view-product">
+                    <img ng-src='{{products.image}}'  alt="" />
+                    <h3>ZOOM</h3>
+                </div>
+
+            </div>
+            <div class="col-sm-7">
+                <div class="product-information"><!--/product-information-->
+                    <img src="images/product-details/new.jpg" class="newarrival" alt="" />
+                    <h2>{{products.name}}</h2>
+                    <p>Web ID: 1089772</p>
+                    <img src="images/product-details/rating.png" alt="" />
+                    <span>
+                        <span>${{products.price}}</span>
+                        <label>Quantity:</label>
+                        <input type="text" value="3" />
+                        <button ng-click="addItem(products.pid,products.name)" class="btn btn-warning btn-sm" id="btn-send">Add to cart</button>
+                    </span>
+                    <p><b>Availability:</b> In Stock</p>
+                    <p><b>Condition:</b> New</p>
+                    <p><b>Brand:</b> E-SHOPPER</p>
+                    <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+                </div><!--/product-information-->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+name = Check service
+description = WebService APIs for Housing Schemes.
+core = 7.x
+dependencies[] = services
+dependencies[] = rest_server
